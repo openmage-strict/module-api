@@ -1,0 +1,4 @@
+src/app/code/core/Mage/Api/ 					            app/code/core/Mage/Api/
+src/app/design/adminhtml/default/default/template/api/ 	    app/design/adminhtml/default/default/template/api/
+src/app/etc/modules/Mage_Api.xml 						    app/etc/modules/Mage_Api.xml
+src/app/locale/en_US/Mage_Api.csv                           app/locale/en_US/Mage_Api.csv
