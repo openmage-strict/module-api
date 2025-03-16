@@ -1,5 +1,4 @@
 <?php
-
 /**
  * OpenMage
  *
@@ -10,7 +9,7 @@
  * @category   Mage
  * @package    Mage_Api
  * @copyright  Copyright (c) 2006-2020 Magento, Inc. (https://www.magento.com)
- * @copyright  Copyright (c) 2020-2024 The OpenMage Contributors (https://www.openmage.org)
+ * @copyright  Copyright (c) 2020-2023 The OpenMage Contributors (https://www.openmage.org)
  * @license    https://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -197,7 +196,7 @@ class Mage_Api_Helper_Data extends Mage_Core_Helper_Abstract
             if ($isDigit) {
                 $mixed = $this->packArrayToObject($mixed);
             } else {
-                $mixed = (object) $mixed;
+                $mixed = (object)$mixed;
             }
         }
         if (is_object($mixed) && isset($mixed->complexObjectArray)) {
@@ -224,8 +223,7 @@ class Mage_Api_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * Convert objects and arrays to array recursively
      *
-     * @param array|object $data
-     * @param-out array $data
+     * @param  array|object $data
      */
     public function toArray(&$data)
     {
@@ -325,7 +323,6 @@ class Mage_Api_Helper_Data extends Mage_Core_Helper_Abstract
      *
      * @param string $conditionOperator
      * @param string $conditionValue
-     * @param-out string|array $conditionValue
      */
     public function formatFilterConditionValue($conditionOperator, &$conditionValue)
     {
@@ -377,6 +374,6 @@ class Mage_Api_Helper_Data extends Mage_Core_Helper_Abstract
             $uri->setPath($request->getBaseUrl() . $request->getPathInfo());
         }
 
-        return $htmlSpecialChars === true ? htmlspecialchars($uri) : (string) $uri;
+        return $htmlSpecialChars === true ? htmlspecialchars($uri) : (string)$uri;
     }
 }

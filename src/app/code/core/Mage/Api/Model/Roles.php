@@ -1,5 +1,4 @@
 <?php
-
 /**
  * OpenMage
  *
@@ -10,7 +9,7 @@
  * @category   Mage
  * @package    Mage_Api
  * @copyright  Copyright (c) 2006-2020 Magento, Inc. (https://www.magento.com)
- * @copyright  Copyright (c) 2019-2024 The OpenMage Contributors (https://www.openmage.org)
+ * @copyright  Copyright (c) 2019-2023 The OpenMage Contributors (https://www.openmage.org)
  * @license    https://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -72,7 +71,7 @@ class Mage_Api_Model_Roles extends Mage_Core_Model_Abstract
      */
     public function getResourcesTree()
     {
-        return $this->_buildResourcesArray(null, null, 0, null, true);
+        return $this->_buildResourcesArray(null, null, null, null, true);
     }
 
     /**
@@ -88,7 +87,7 @@ class Mage_Api_Model_Roles extends Mage_Core_Model_Abstract
      */
     public function getResourcesList2D()
     {
-        return $this->_buildResourcesArray(null, null, 0, true);
+        return $this->_buildResourcesArray(null, null, null, true);
     }
 
     /**
@@ -100,6 +99,7 @@ class Mage_Api_Model_Roles extends Mage_Core_Model_Abstract
     }
 
     /**
+     * @param Varien_Simplexml_Element|null $resource
      * @param string|null $parentName
      * @param int $level
      * @param bool|null $represent2Darray
@@ -108,7 +108,7 @@ class Mage_Api_Model_Roles extends Mage_Core_Model_Abstract
      * @return array|false|Varien_Simplexml_Element
      */
     protected function _buildResourcesArray(
-        ?Varien_Simplexml_Element $resource = null,
+        Varien_Simplexml_Element $resource = null,
         $parentName = null,
         $level = 0,
         $represent2Darray = null,
@@ -130,17 +130,17 @@ class Mage_Api_Model_Roles extends Mage_Core_Model_Abstract
 
                 //assigning module for its' children nodes
                 if ($resource->getAttribute('module')) {
-                    $module = (string) $resource->getAttribute('module');
+                    $module = (string)$resource->getAttribute('module');
                 }
 
                 if ($rawNodes) {
-                    $resource->addAttribute('aclpath', $resourceName);
+                    $resource->addAttribute("aclpath", $resourceName);
                 }
 
-                $resource->title = Mage::helper($module)->__((string) $resource->title);
+                $resource->title = Mage::helper($module)->__((string)$resource->title);
 
                 if (is_null($represent2Darray)) {
-                    $result[$resourceName]['name']  = (string) $resource->title;
+                    $result[$resourceName]['name']  = (string)$resource->title;
                     $result[$resourceName]['level'] = $level;
                 } else {
                     $result[] = $resourceName;
